@@ -231,7 +231,7 @@ html, body {
 }
 
 /* Christmas tree */
-.christmas-tree {
+.page-svg-content {
   display: flex;
   width: inherit;
   height: inherit;
@@ -239,7 +239,7 @@ html, body {
   justify-content: center;
   align-items: center;
 }
-.christmas-tree > object {
+.page-svg-content > object {
   display: block;
   max-width: 100%;
   max-height: 100%;
