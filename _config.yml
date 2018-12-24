@@ -1,0 +1,16 @@
+# Default github's theme generates some javascript stuff, avoid this by
+# changing the theme to the Jekyll's default one
+theme: minima
+
+# Actually there is no jekyll generated content, but use the generator exclude
+# feature for excluding directories from beeing publically served (i.e. src/)
+exclude:
+  - node_modules/
+  - 2018/src/
+  - 2018/sass/
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - rollup.config.js
+  - README.md

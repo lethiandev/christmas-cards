@@ -1,0 +1,176 @@
+@import '~reset-css/sass/_reset';
+
+html, body {
+  height: 100%;
+  color: #183355;
+}
+
+#wrapper {
+  background: linear-gradient(20deg, #acb6e5, #8decdb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+#card {
+  margin: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Book with pages */
+
+.book {
+  margin-left: 0;
+  width: 360px;
+  height: 510px;
+  position: relative;
+  perspective: 1650px;
+  transform-style: preserve-3d;
+  transition: margin-left 700ms ease-in-out;
+}
+
+@media (max-width: 400px) {
+  .book {
+    width: 280px;
+    height: 396px;
+  }
+}
+
+@media (min-width: 760px) {
+  .book-opened {
+    margin-left: 360px;
+  }
+}
+
+.page {
+  background: linear-gradient(to left, #f8f8f8 30%, #f0f0f0);
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  transform-origin: left center;
+}
+
+.page-content {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+}
+
+.page:nth-child(even) > .page-content {
+  /* Flip horizontally the back page content */
+  transform: scale(-1.0, 1.0)
+}
+
+/* Book pages flip on reveal */
+
+.page-flip {
+  position: absolute;
+  right: 15px;
+  bottom: 6px;
+  cursor: pointer;
+  transition: transform 100ms ease-in-out;
+
+  > img {
+    display: block;
+  }
+}
+
+.page-flip:hover {
+  transform: scale(1.15);
+}
+
+.page:nth-child(even) .page-flip {
+  right: auto;
+  left: 15px;
+}
+
+.page-revealed,
+.page-revealed + .page {
+  animation: flipPageOpen 700ms ease-in-out;
+  transform: rotateY(-180deg);
+}
+
+.page-closed,
+.page-closed + .page {
+  animation: flipPageClose 700ms ease-in-out;
+}
+
+.page-revealed,
+.page-closed {
+  backface-visibility: hidden;
+}
+
+.page:nth-child(1) { z-index: 40; }
+.page:nth-child(2) { z-index: 30; }
+.page:nth-child(3) { z-index: 20; }
+.page:nth-child(4) { z-index: 10; }
+
+@keyframes flipPageOpen {
+  0%   { transform: rotateY(0deg); }
+  100% { transform: rotateY(-180deg); }
+}
+
+@keyframes flipPageClose {
+  0%   { transform: rotateY(-180deg); }
+  100% { transform: rotateY(0deg); }
+}
+
+/* Book bottom shadow */
+.book-shadow {
+  width: 100%;
+  float: right;
+  position: relative;
+}
+
+.book-shadow:after {
+  content: '';
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0));
+  display: block;
+  position: absolute;
+  z-index: -1;
+  top: -40px;
+  right: -24px;
+  bottom: -36px;
+  left: -24px;
+}
+
+@media (min-width: 760px) {
+  .book-opened + .book-shadow {
+    animation: bookShadowExpand 700ms ease-in-out;
+  }
+}
+
+@keyframes bookShadowExpand {
+  0%   { width: 100%; }
+  50%  { width: 75%; }
+  100% { width: 100%; }
+}
+
+/* Animated snowfall */
+
+.snowfall {
+  position: absolute;
+  z-index: 0;
+}
+
+/* Christmas tree */
+
+.christmas-tree {
+  display: flex;
+  width: inherit;
+  height: inherit;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  > object {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}

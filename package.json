@@ -1,0 +1,25 @@
+{
+  "name": "christmas-cards",
+  "version": "1.0.0",
+  "description": "Animated HTML5 christmas cards",
+  "main": "index.html",
+  "scripts": {
+    "2018:build": "rollup -c --environment CSS_OUTPUT:2018 -o 2018/bundle.js 2018/src/main.js",
+    "2018:dev": "npm run 2018:build -- -w"
+  },
+  "author": "Konrad Nowakowski <konrad.x92@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.2.3",
+    "reset-css": "^4.0.1",
+    "rollup": "^0.68.2",
+    "rollup-plugin-babel": "^4.1.0",
+    "rollup-plugin-babel-minify": "^6.2.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-sass": "^0.9.3"
+  }
+}
